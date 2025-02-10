@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17.2
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${DB_SUPER_USER}
+      POSTGRES_PASSWORD: ${DB_SUPER_USER_PASS}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  pg-data: {}
